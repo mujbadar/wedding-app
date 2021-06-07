@@ -12,7 +12,7 @@ import Bar from './components/barDashboard'
 import './App.css'
 
 let userCookie = localStorage.getItem('Data')  ? JSON.parse(localStorage.getItem('Data')) : {}
-let baseURL = 'http://localhost:3003' 
+let baseURL = 'https://mujamna-wedding.herokuapp.com/ ' 
 
 class App extends React.Component {
   state = {

@@ -2,7 +2,7 @@ import React 		from 'react'
 import { Link } 	from 'react-router-dom'
 import { Form,  Button} from  'react-bootstrap'
 
-let baseURL = 'http://localhost:3003' 
+let baseURL = 'https://mujamna-wedding.herokuapp.com/ ' 
 
 class Login extends React.Component {
 	state = {
@@ -97,7 +97,7 @@ class Login extends React.Component {
 							<Button className='btn btn-primary' type='submit' value='Sign In'>Sign in</Button>
 						</Form>
 					<div className='dropdown-divider' />
-					<Link to='/Create'>
+					<Link to='wedding-app/Create'>
 						<div className='dropdown-item'>
 						New around here? Sign up!
 						</div>

@@ -5,7 +5,7 @@ import {Table, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-let baseURL = 'http://localhost:3003/'
+let baseURL = 'https://mujamna-wedding.herokuapp.com/ '
 
 class User extends React.Component {
     intervalID;
