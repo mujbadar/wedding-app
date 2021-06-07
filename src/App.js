@@ -16,7 +16,7 @@ let baseURL = 'http://localhost:3003'
 class App extends React.Component {
   state = {
     logged_in: userCookie.logged_in || false,
-    // logged_in: true,
+    admin: false,
     user_id: userCookie.user_id || '',
     user_name: userCookie.user_name || '',
     first_name: userCookie.first_name || '',
@@ -25,34 +25,6 @@ class App extends React.Component {
     orders: userCookie.orders || [],
   }
 
-  // componentDidMount(){
-  //   if(this.state.logged_in){
-  //     this.getOrders()
-  //   }
-  // }
-
-  // getOrders = () => {
-  //   fetch(baseURL + '/user/' + this.state.user_id, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }).then(res => res.json())
-  //   .then(resJson => {
-  //     this.setState({
-  //       user_id: resJson._id,
-  //       first_name: resJson.first_name,
-  //       last_name: resJson.last_name,
-  //       number: resJson.number,
-  //       orders: resJson.orders,
-  //       logged_in: true
-  //     })
-  //     console.log('first name:', resJson.first_name)
-  //     console.log('Orders: ', resJson.orders)
-  //   }).catch(error => console.log({'Error:': error }))
-  //   localStorage.setItem('Data', JSON.stringify(this.state))
-  //   userCookie = this.state
-  // }
 
   changeUser = (user) => {
 		this.setState({
@@ -86,9 +58,6 @@ class App extends React.Component {
 
           }
           <Route path='/Create' component={NewUser}/>
-          <Route path='/' render={() => (
-            <Bar state={this.state} />
-          )} />
         </div>
       </Router>
     );

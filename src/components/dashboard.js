@@ -10,7 +10,8 @@ class Dashboard extends React.Component {
         number : this.props.state.number,
         first_name : this.props.state.first_name,
         last_name : this.props.state.last_name,
-        user_id : this.props.state.user_id
+        user_id : this.props.state.user_id,
+		admin : this.props.state.admin
 	}
 
 	findOrders = () => {
@@ -66,7 +67,7 @@ class Dashboard extends React.Component {
 						</thead>
 						<tbody>
 							{
-								this.state.orders.map((order, index) => {
+								this.state.orders.reverse().map((order, index) => {
 									if(order.status ==  'submitted'){
 										return (
 											<tr key={index}>

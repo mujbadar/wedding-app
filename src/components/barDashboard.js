@@ -13,7 +13,6 @@ class Bar extends React.Component {
         first_name : this.props.state.first_name,
         last_name : this.props.state.last_name,
         user_id : this.props.state.user_id,
-		order_id: ''
 	}
 
 	findOrders = () => {
@@ -86,7 +85,7 @@ class Bar extends React.Component {
 						</thead>
 						<tbody>
 							{
-								this.state.orders.map((order, index) => {
+								this.state.orders.reverse().map((order, index) => {
 									if(order.status == 'submitted'){
 										return (
 											<tr key={index}>
@@ -95,7 +94,7 @@ class Bar extends React.Component {
 												<th>{order.ingredients}</th>
 												<th>{order.quantity}</th>
 												<th>{order.status}</th>
-												<th><div className='btn btn-secondary' onClick={(e) => this.completeOrder(order._id, e)}>Finished order</div></th>											
+												<th><button className='btn btn-secondary' onClick={(e) => this.completeOrder(order._id, e)}>Finished order</button></th>											
 											</tr>
 										)
 									} else {
