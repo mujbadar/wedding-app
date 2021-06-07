@@ -1,5 +1,6 @@
 import React 		from 'react'
 import { Link } 	from 'react-router-dom'
+import { Form,  Button} from  'react-bootstrap'
 
 let baseURL = 'http://localhost:3003' 
 
@@ -75,30 +76,32 @@ class Login extends React.Component {
 
 	render () {
 		return (
-			<div className='dropdown offset-6 col-6 justify-content-center'>
-				<button className='btn btn-secondary dropdown-toggle' id='dropdownMenu' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Log In</button>
-				<div className='dropdown-menu dropdown-menu-right' aria-labelledby='dropdownMenu'>
-					<form className='px-4 py-3' onSubmit={this.handleSubmit}>
-						{
-							this.state.wrongUser ? <small className='text-danger'>Wrong UserName</small> : null
-						}
-						<div className='form-group'>
-							<label htmlFor='user_name'></label>
-							<input type='text' id='user_name' name='user_name' onChange={this.handleChange} value={this.state.user_name} placeholder='User Name' required/>
-						</div>
-						{
-							this.state.wrongPass ? <small className='text-danger'>Wrong Password</small> : null
-						}
-						<div className='form-group'>
-							<label htmlFor='password'></label>
-							<input type='password' id='password' name='password' onChange={this.handleChange} value={this.state.password} placeholder='Password' required/>
-						</div>
-						<input className='btn btn-primary' type='submit' value='Sign In'/>
-					</form>
+			<div className='container-fluid'>
+				<div>
+					<h1>Login to order</h1>
+						<Form className='px-4 py-3' onSubmit={this.handleSubmit}>
+							{
+								this.state.wrongUser ? <small className='text-danger'>Wrong UserName</small> : null
+							}
+							<Form.Group className='form-group'>
+								<Form.Label htmlFor='user_name'></Form.Label>
+								<Form.Control type='text' id='user_name' name='user_name' onChange={this.handleChange} value={this.state.user_name} placeholder='User Name' required/>
+							</Form.Group>
+							{
+								this.state.wrongPass ? <small className='text-danger'>Wrong Password</small> : null
+							}
+							<Form.Group className='form-group'>
+								<Form.Label htmlFor='password'></Form.Label>
+								<Form.Control type='password' id='password' name='password' onChange={this.handleChange} value={this.state.password} placeholder='Password' required/>
+							</Form.Group>
+							<Button className='btn btn-primary' type='submit' value='Sign In'>Sign in</Button>
+						</Form>
 					<div className='dropdown-divider' />
-					<Link to='/Create'><div className='dropdown-item'>
+					<Link to='/Create'>
+						<div className='dropdown-item'>
 						New around here? Sign up!
-					</div></Link>
+						</div>
+					</Link>
 				</div>
 			</div>
 		)

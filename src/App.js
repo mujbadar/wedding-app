@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route }	from 'react-router-dom'
 import { Redirect, useParams }							from 'react-router'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Login from './components/login'
 import NewUser from './components/newUser'
@@ -16,7 +17,7 @@ let baseURL = 'http://localhost:3003'
 class App extends React.Component {
   state = {
     logged_in: userCookie.logged_in || false,
-    admin: false,
+    admin: userCookie.amin || false,
     user_id: userCookie.user_id || '',
     user_name: userCookie.user_name || '',
     first_name: userCookie.first_name || '',
@@ -34,11 +35,26 @@ class App extends React.Component {
 			user_id: user._id,
 			orders: user.orders,
       number: user.number,
-			logged_in: true
+			logged_in: true,
+      admin: user.admin
 		})
 
 		localStorage.setItem('Data', JSON.stringify(this.state))
 		userCookie= this.state
+	}
+
+  logout = () => {
+		this.setState({
+			user_name: '',
+			first_name: '',
+			last_name: '',
+			user_id: '',
+			orders: '',
+      number: '',
+			logged_in: false,
+      admin: '',
+		})
+		localStorage.clear()
 	}
 
   render(){
@@ -53,7 +69,7 @@ class App extends React.Component {
             )} />
               :
             <Route path='/' render={() => (
-              <Dashboard state={this.state} />
+              <Dashboard state={this.state} logout={this.logout}/>
             )} />
 
           }

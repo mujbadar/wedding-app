@@ -4,21 +4,23 @@ import NewOrder from './newOrder'
 import {Table, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+
 let baseURL = 'http://localhost:3003/'
 
-class Bar extends React.Component {
-	intervalID;
-	
+class User extends React.Component {
+    intervalID;
+
 	state = {
 		orders : [],
         number : this.props.state.number,
         first_name : this.props.state.first_name,
         last_name : this.props.state.last_name,
         user_id : this.props.state.user_id,
+		admin : this.props.state.admin
 	}
 
 	findOrders = () => {
-		fetch(baseURL + 'order', {
+		fetch(baseURL + 'order/' + this.state.user_id, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -29,44 +31,30 @@ class Bar extends React.Component {
 			this.setState({
 				orders: resJson
 			})
-			this.intervalID = setTimeout(this.findOrders.bind(this), 10000);
 			console.log('User orders found')
+            this.intervalID = setTimeout(this.findOrders.bind(this), 10000);
 		}).catch (error => console.error({'Error': error}))
 	}
 
-    completeOrder = (id, e) => {
-        e.preventDefault()
-		console.log(baseURL + 'order/' + id)
-        fetch(baseURL + 'order/' + id, {
-            method: 'PUT',
-            body: JSON.stringify(
-                {
-                    status: 'completed'
-                }
-            ),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-        .then(resJson => console.log(resJson))
-        .catch(error => console.log({'Error': error}))
-    }
-
 	componentDidMount () {
         this.findOrders()
-
 	}
-	
+	//  log = () => {
+	// 	 console.log(this.state.orders)
+	// 	 console.log(this.state.user_id)
+	//  }
+
 	render () {
 		return (
 			<div className='container-fluid'>
 				<div className="jumbotron bg-white">
-					<h1 className="display-4">Hello Bar! Please complete the drinks </h1>
+					<h1 className="display-4">Hello {this.state.first_name} {this.state.last_name} </h1>
+                    <Button className='btn-danger' onClick={this.props.logout}>Logout</Button>
                     {
                     this.state.orders.length == 1 ?
-                    <p>Customers ordered: {this.state.orders.length} drink</p>
+                    <p>You have ordered: {this.state.orders.length} drink</p>
                     :
-                    <p>Customers ordered: {this.state.orders.length} drinks</p>
+                    <p>You have ordered: {this.state.orders.length} drinks</p>
                     }
 					
 					<p className="lead"></p>
@@ -78,8 +66,7 @@ class Bar extends React.Component {
 					<Table striped bordered hover>
 						<thead className="thead-dark">
 							<tr>
-                                <th scope="col">Order</th>
-                                <th scope="col">Drink</th>
+								<th scope="col">Drink</th>
 								<th scope="col">Chaser</th>
 								<th scope="col">Quantity</th>
                                 <th scope="col">Status</th>
@@ -88,39 +75,36 @@ class Bar extends React.Component {
 						<tbody>
 							{
 								this.state.orders.reverse().map((order, index) => {
-									if(order.status == 'submitted'){
+									if(order.status ==  'submitted'){
 										return (
 											<tr key={index}>
-												<th>{index}</th>
 												<th>{order.name}</th>
 												<th>{order.ingredients}</th>
 												<th>{order.quantity}</th>
 												<th>{order.status}</th>
-												<th><button className='btn btn-secondary' onClick={(e) => this.completeOrder(order._id, e)}>Finished order</button></th>											
-											</tr>
-										)
-									} else {
-										return (
-											<tr key={index}>
-												<th>{index}</th>
-												<th>{order.name}</th>
-												<th>{order.ingredients}</th>
-												<th>{order.quantity}</th>
-												<th>{order.status}</th>										
 											</tr>
 										)
 									}
+									else{
+										return (
+											<tr key={index}>
+												<th>{order.name}</th>
+												<th>{order.ingredients}</th>
+												<th>{order.quantity}</th>
+												<th>{order.status}</th>
+											</tr>
+										)
+									}
+
 								})
 							}
 						</tbody>
 					</Table>
 				</div>
-				<Button className='btn-danger' onClick={this.props.logout}>Logout</Button>
+                <NewOrder state={this.state}/>
 			</div>
 		)
 	}
 }
 
-export default Bar
-
-						
+export default User
