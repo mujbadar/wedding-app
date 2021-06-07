@@ -2,7 +2,7 @@ import React 		from 'react'
 import { Link } 	from 'react-router-dom'
 import { Form,  Button} from  'react-bootstrap'
 
-let baseURL = 'https://mujamna-wedding.herokuapp.com/ ' 
+let baseURL = 'https://mujamna-wedding.herokuapp.com/' 
 
 class Login extends React.Component {
 	state = {

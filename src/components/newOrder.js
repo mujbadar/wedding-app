@@ -2,7 +2,7 @@ import React 			from 'react'
 import { Redirect }		from 'react-router'
 import { InputGroup, FormControl, Form, Row, Col, Card, Button } from 'react-bootstrap'
 
-let baseURL = 'https://mujamna-wedding.herokuapp.com/ '
+let baseURL = 'https://mujamna-wedding.herokuapp.com/'
 
 class NewOrder extends React.Component {
 	state = {
