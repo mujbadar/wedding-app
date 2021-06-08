@@ -2,7 +2,7 @@ import React 		from 'react'
 import { Link } 	from 'react-router-dom'
 import { Form,  Button} from  'react-bootstrap'
 
-let baseURL = 'https://mujamna-wedding.herokuapp.com/' 
+let baseURL = 'https://desolate-caverns-32861.herokuapp.com/'
 
 class Login extends React.Component {
 	state = {
@@ -26,7 +26,7 @@ class Login extends React.Component {
 			wrongUser: false,
 			wrongPass: false
 		})
-		fetch(baseURL + '/login', {
+		fetch(baseURL + 'login', {
 			method: 'POST',
 			body: JSON.stringify(
 				{
@@ -97,7 +97,7 @@ class Login extends React.Component {
 							<Button className='btn btn-primary' type='submit' value='Sign In'>Sign in</Button>
 						</Form>
 					<div className='dropdown-divider' />
-					<Link to='wedding-app/Create'>
+					<Link to='/Create'>
 						<div className='dropdown-item'>
 						New around here? Sign up!
 						</div>

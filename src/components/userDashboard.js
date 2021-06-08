@@ -4,8 +4,7 @@ import NewOrder from './newOrder'
 import {Table, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-
-let baseURL = 'https://mujamna-wedding.herokuapp.com/'
+let baseURL = 'https://desolate-caverns-32861.herokuapp.com/'
 
 class User extends React.Component {
     intervalID;
@@ -39,10 +38,10 @@ class User extends React.Component {
 	componentDidMount () {
         this.findOrders()
 	}
-	//  log = () => {
-	// 	 console.log(this.state.orders)
-	// 	 console.log(this.state.user_id)
-	//  }
+
+	componentWillUnmount(){
+		clearInterval(this.intervalID)
+	}
 
 	render () {
 		return (

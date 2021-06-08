@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Bar from './barDashboard'
 import User from './userDashboard'
 
-let baseURL = 'https://mujamna-wedding.herokuapp.com/'
+
+
 
 class Dashboard extends React.Component {
 	state = {

@@ -4,7 +4,8 @@ import NewOrder from './newOrder'
 import {Table, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-let baseURL = 'https://mujamna-wedding.herokuapp.com/'
+let baseURL = 'https://desolate-caverns-32861.herokuapp.com/'
+
 
 class Bar extends React.Component {
 	intervalID;
@@ -48,7 +49,8 @@ class Bar extends React.Component {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-        .then(resJson => console.log(resJson))
+        .then(resJson => {console.log(resJson)
+		this.findOrders()})
         .catch(error => console.log({'Error': error}))
     }
 
@@ -56,7 +58,9 @@ class Bar extends React.Component {
         this.findOrders()
 
 	}
-	
+	componentWillUnmount(){
+		clearInterval(this.intervalID)
+	}
 	render () {
 		return (
 			<div className='container-fluid'>
