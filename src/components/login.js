@@ -77,7 +77,7 @@ class Login extends React.Component {
 	render () {
 		return (
 			<div className='container-fluid'>
-				<div>
+				<div className='login-module'>
 					<h1>Login to order</h1>
 						<Form className='px-4 py-3' onSubmit={this.handleSubmit}>
 							{
@@ -94,14 +94,9 @@ class Login extends React.Component {
 								<Form.Label htmlFor='password'></Form.Label>
 								<Form.Control type='password' id='password' name='password' onChange={this.handleChange} value={this.state.password} placeholder='Password' required/>
 							</Form.Group>
+							<br  />
 							<Button className='btn btn-primary' type='submit' value='Sign In'>Sign in</Button>
 						</Form>
-					<div className='dropdown-divider' />
-					<Link to='/Create'>
-						<div className='dropdown-item'>
-						New around here? Sign up!
-						</div>
-					</Link>
 				</div>
 			</div>
 		)

@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Bar from './barDashboard'
 import User from './userDashboard'
 
-
+// let baseURL = 'https://mujamna-wedding.herokuapp.com/'
 
 
 class Dashboard extends React.Component {
@@ -27,7 +27,11 @@ class Dashboard extends React.Component {
 
 	render () {
 		return(
+		<div>
+			{
 		this.state.admin? <Bar state={this.state} logout={this.props.logout}/> : <User state={this.state} logout={this.props.logout}/>
+			}
+		 </div>
 		)
 	}
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route }	from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route }	from 'react-router-dom'
 import { Redirect, useParams }							from 'react-router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -73,6 +73,9 @@ class App extends React.Component {
             )} />
 
           }
+          <Link to='/Create'><div className='dropdown-item'>
+						New around here? Sign up!
+					</div></Link>
           <Route path='/Create' component={NewUser}/>
         </div>
       </Router>

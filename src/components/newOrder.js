@@ -8,7 +8,6 @@ class NewOrder extends React.Component {
 	state = {
 		name: '',
 		ingredients: '',
-		quantity: '',
         user_id : this.props.state.user_id,
 		user_number: this.props.state.number
 
@@ -26,7 +25,7 @@ class NewOrder extends React.Component {
 				{
 					name: this.state.name,
 					ingredients: this.state.ingredients,
-					quantity: this.state.quantity,
+					quantity: '1',
 					user_number: this.state.user_number,
 					status: 'submitted',
 					user: this.state.user_id
@@ -55,11 +54,10 @@ class NewOrder extends React.Component {
 						<h3>Choose your drink</h3>
 						<Col>
 							<Card id='name' value= 'crown' onClick={this.handleChange} style={{ width: '18rem' }}>
-  								<Card.Img variant="top" src="holder.js/100px180" />
   								<Card.Body>
-    								<Card.Title>Crown</Card.Title>
+    								<Card.Title>Tequila</Card.Title>
     								<Card.Text>
-      									Whiskey with a chaser
+      									Please select a mixer
     								</Card.Text>
     								<Button onClick={this.handleChange} id='name' value='crown' variant="primary">Choose Beverage</Button>
   								</Card.Body>
@@ -67,11 +65,10 @@ class NewOrder extends React.Component {
 						</Col>
 						<Col>
 							<Card id='name' value= 'titos' onClick={this.handleChange} style={{ width: '18rem' }}>
-  								<Card.Img variant="top" src="holder.js/100px180" />
   								<Card.Body>
-    								<Card.Title>Tito's</Card.Title>
+    								<Card.Title>Vodka</Card.Title>
     								<Card.Text>
-      									Austin Vodka
+      									Please select a mixer
     								</Card.Text>
     								<Button onClick={this.handleChange} id='name' value='titos' variant="primary">Choose Beverage</Button>
   								</Card.Body>
@@ -79,11 +76,10 @@ class NewOrder extends React.Component {
 						</Col>
 						<Col>
 							<Card id='name' value= 'gin' onClick={this.handleChange} style={{ width: '18rem' }}>
-  								<Card.Img variant="top" src="holder.js/100px180" />
   								<Card.Body>
-    								<Card.Title>Crown</Card.Title>
+    								<Card.Title>Whiskey</Card.Title>
     								<Card.Text>
-      									Whiskey with a chaser
+      									Please select a mixer
     								</Card.Text>
     								<Button onClick={this.handleChange} id='name' value='gin' variant="primary">Choose Beverage</Button>
   								</Card.Body>
@@ -93,14 +89,12 @@ class NewOrder extends React.Component {
 					</Row>
 					<br />
 					<Row>
-						<h3>Choose your Chaser</h3>
+						<h3>Choose your mixer</h3>
 						<Col>						
 							<Card id='ingredients' value= 'coke' onClick={this.handleChange} style={{ width: '18rem' }}>
-  								<Card.Img variant="top" src="holder.js/100px180" />
   								<Card.Body>
     								<Card.Title>Coke</Card.Title>
     								<Card.Text>
-      									Whiskey with a chaser
     								</Card.Text>
     								<Button onClick={this.handleChange} id='ingredients' value='coke' variant="primary">Choose Beverage</Button>
   								</Card.Body>
@@ -108,40 +102,60 @@ class NewOrder extends React.Component {
 						</Col>
 						<Col>
 							<Card id='ingredients' value= 'sprite' onClick={this.handleChange} style={{ width: '18rem' }}>
-  								<Card.Img variant="top" src="holder.js/100px180" />
   								<Card.Body>
     								<Card.Title>Sprite</Card.Title>
     								<Card.Text>
-      									Whiskey with a chaser
     								</Card.Text>
     								<Button onClick={this.handleChange} id='ingredients' value='sprite' variant="primary">Choose Beverage</Button>
   								</Card.Body>
 							</Card>	
 						</Col>
 						<Col>
-							<Card id='ingredients' value= 'cranberry' onClick={this.handleChange} style={{ width: '18rem' }}>
+							<Card id='ingredients' value= 'ginger-ale' onClick={this.handleChange} style={{ width: '18rem' }}>
   								<Card.Img variant="top" src="holder.js/100px180" />
   								<Card.Body>
-    								<Card.Title>Cranberry</Card.Title>
+    								<Card.Title>Ginger Ale</Card.Title>
     								<Card.Text>
-      									Whiskey with a chaser
     								</Card.Text>
-    								<Button onClick={this.handleChange} id='ingredients' value='cranberry' variant="primary">Choose Beverage</Button>
+    								<Button onClick={this.handleChange} id='ingredients' value='ginger-ale' variant="primary">Choose Beverage</Button>
   								</Card.Body>
 							</Card>
 						</Col>
-						
+						<Col>
+							<Card id='ingredients' value= 'diet-coke' onClick={this.handleChange} style={{ width: '18rem' }}>
+  								<Card.Body>
+    								<Card.Title>Diet Coke</Card.Title>
+    								<Card.Text>
+    								</Card.Text>
+    								<Button onClick={this.handleChange} id='ingredients' value='diet-coke' variant="primary">Choose Beverage</Button>
+  								</Card.Body>
+							</Card>
+						</Col>
+						<Col>
+							<Card id='ingredients' value= 'club-soda' onClick={this.handleChange} style={{ width: '18rem' }}>
+  								<Card.Img variant="top" src="holder.js/100px180" />
+  								<Card.Body>
+    								<Card.Title>Club Soda</Card.Title>
+    								<Card.Text>
+    								</Card.Text>
+    								<Button onClick={this.handleChange} id='ingredients' value='club-soda' variant="primary">Choose Beverage</Button>
+  								</Card.Body>
+							</Card>
+						</Col>
+						<Col>
+							<Card id='ingredients' value= 'tonic' onClick={this.handleChange} style={{ width: '18rem' }}>
+  								<Card.Img variant="top" src="holder.js/100px180" />
+  								<Card.Body>
+    								<Card.Title>Tonic</Card.Title>
+    								<Card.Text>
+    								</Card.Text>
+    								<Button onClick={this.handleChange} id='ingredients' value='tonic' variant="primary">Choose Beverage</Button>
+  								</Card.Body>
+							</Card>
+						</Col>
 					</Row>
+
 					<br/>
-					<Col sm={10}>
-		   				<label htmlFor='name'></label>
-							<select className='form-control' type='text' id='quantity' name='quantity' onChange={this.handleChange} value={this.state.quantity} placeholder='Drink' >
-								<option selected>Quantity</option>
-								<option value= '1'>1</option>
-								<option value='2'>2</option>
-								<option value='3'>3</option>
-							</select>
-	  				</Col>
 					<br />
 					<Button onClick={this.handleSubmit}>Submit</Button>
 					{/* <form onSubmit={this.handleSubmit}>

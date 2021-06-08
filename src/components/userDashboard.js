@@ -39,7 +39,7 @@ class User extends React.Component {
         this.findOrders()
 	}
 
-	componentWillUnmount(){
+		componentWillUnmount(){
 		clearInterval(this.intervalID)
 	}
 
@@ -60,7 +60,9 @@ class User extends React.Component {
 					<hr className="my-4" />
 					<p></p>
 				</div>
-
+				<NewOrder state={this.state}/>
+				<br />
+				<h3>Your Orders</h3>
 				<div className="table-responsive">
 					<Table striped bordered hover>
 						<thead className="thead-dark">
@@ -100,7 +102,6 @@ class User extends React.Component {
 						</tbody>
 					</Table>
 				</div>
-                <NewOrder state={this.state}/>
 			</div>
 		)
 	}
