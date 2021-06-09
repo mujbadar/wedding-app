@@ -91,14 +91,12 @@ class Bar extends React.Component {
 						<tbody>
 							{
 								this.state.orders.reverse().map((order, index) => {
-									let orderNumber = order.id.truncate(6)
 									if(order.status == 'submitted'){
 										return (
 											<tr key={index}>
 												<th>{order.name}</th>
 												<th>{order.ingredients}</th>
 												<th>{order.user_name}</th>
-												<th>{orderNumber}</th>
 												<th><button className='btn btn-secondary' onClick={(e) => this.completeOrder(order._id, e)}>Finished order</button></th>											
 											</tr>
 										)
@@ -108,7 +106,6 @@ class Bar extends React.Component {
 												<th>{order.name}</th>
 												<th>{order.ingredients}</th>
 												<th>{order.user_name}</th>
-												<th>{orderNumber}</th>
 												<th style={{color: 'green'}}>Order Complete</th>										
 											</tr>
 										)
