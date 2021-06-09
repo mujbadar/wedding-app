@@ -17,7 +17,8 @@ class Dashboard extends React.Component {
         first_name : this.props.state.first_name,
         last_name : this.props.state.last_name,
         user_id : this.props.state.user_id,
-		admin : this.props.state.admin
+		admin : this.props.state.admin,
+		user_name: this.props.state.user_name
 	}
 
 	//  log = () => {

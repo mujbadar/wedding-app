@@ -15,7 +15,8 @@ class User extends React.Component {
         first_name : this.props.state.first_name,
         last_name : this.props.state.last_name,
         user_id : this.props.state.user_id,
-		admin : this.props.state.admin
+		admin : this.props.state.admin,
+		user_name: this.props.state.user_name
 	}
 
 	findOrders = () => {
@@ -35,6 +36,16 @@ class User extends React.Component {
 		}).catch (error => console.error({'Error': error}))
 	}
 
+	deleteOrder = (id) => {
+		fetch(baseURL + 'order/' + id, {
+			method: 'DELETE',
+		}).then (res => {
+			const findIndex = this.state.orders.findIndex(room => room._id === id)
+			const copyOrder = [...this.state.orders]
+			copyOrder.splice(findIndex, 1)
+			this.setState({orders: copyOrder})
+		}).catch (error => console.error({'Error': error}))
+	}
 	componentDidMount () {
         this.findOrders()
 	}
@@ -69,8 +80,7 @@ class User extends React.Component {
 							<tr>
 								<th scope="col">Drink</th>
 								<th scope="col">Chaser</th>
-								<th scope="col">Quantity</th>
-                                <th scope="col">Status</th>
+								<th scope="col">Status</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -81,8 +91,7 @@ class User extends React.Component {
 											<tr key={index}>
 												<th>{order.name}</th>
 												<th>{order.ingredients}</th>
-												<th>{order.quantity}</th>
-												<th>{order.status}</th>
+												<th><button className='btn btn-danger' onClick={(e) => this.deleteOrder(order._id, e)}>Delete order</button></th>
 											</tr>
 										)
 									}
@@ -91,8 +100,7 @@ class User extends React.Component {
 											<tr key={index}>
 												<th>{order.name}</th>
 												<th>{order.ingredients}</th>
-												<th>{order.quantity}</th>
-												<th>{order.status}</th>
+												<th style={{color: 'green'}}>{order.status}</th>
 											</tr>
 										)
 									}

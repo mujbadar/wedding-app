@@ -82,35 +82,34 @@ class Bar extends React.Component {
 					<Table striped bordered hover>
 						<thead className="thead-dark">
 							<tr>
-                                <th scope="col">Order</th>
                                 <th scope="col">Drink</th>
 								<th scope="col">Chaser</th>
-								<th scope="col">Quantity</th>
+								<th scope="col">User</th>
                                 <th scope="col">Status</th>
 							</tr>
 						</thead>
 						<tbody>
 							{
 								this.state.orders.reverse().map((order, index) => {
+									let orderNumber = order.id.truncate(6)
 									if(order.status == 'submitted'){
 										return (
 											<tr key={index}>
-												<th>{index}</th>
 												<th>{order.name}</th>
 												<th>{order.ingredients}</th>
-												<th>{order.quantity}</th>
-												<th>{order.status}</th>
+												<th>{order.user_name}</th>
+												<th>{orderNumber}</th>
 												<th><button className='btn btn-secondary' onClick={(e) => this.completeOrder(order._id, e)}>Finished order</button></th>											
 											</tr>
 										)
 									} else {
 										return (
 											<tr key={index}>
-												<th>{index}</th>
 												<th>{order.name}</th>
 												<th>{order.ingredients}</th>
-												<th>{order.quantity}</th>
-												<th>{order.status}</th>										
+												<th>{order.user_name}</th>
+												<th>{orderNumber}</th>
+												<th style={{color: 'green'}}>Order Complete</th>										
 											</tr>
 										)
 									}

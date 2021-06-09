@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Link, Route }	from 'react-router-dom'
 import { Redirect, useParams }							from 'react-router'
+import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Login from './components/login'

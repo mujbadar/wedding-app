@@ -9,8 +9,9 @@ class NewOrder extends React.Component {
 		name: '',
 		ingredients: '',
         user_id : this.props.state.user_id,
-		user_number: this.props.state.number
-
+		user_number: this.props.state.number,
+		user_name: this.props.state.user_name,
+		active_drink: false
 	}
 
 	handleChange = (e) => {
@@ -25,10 +26,10 @@ class NewOrder extends React.Component {
 				{
 					name: this.state.name,
 					ingredients: this.state.ingredients,
-					quantity: '1',
 					user_number: this.state.user_number,
 					status: 'submitted',
-					user: this.state.user_id
+					user: this.state.user_id,
+					user_name: this.state.user_name
 				}),
 			headers: {
 				'Content-Type': 'application/json'
@@ -44,6 +45,11 @@ class NewOrder extends React.Component {
 		}).catch (error => console.error({'Error': error}))
 	}
 
+	toggleClass() {
+        const currentState = this.state.active;
+        // this.setState({ active: !currentState });
+    };
+
 	render () {
 		return (
 			<div className='container-fluid'>
@@ -53,18 +59,18 @@ class NewOrder extends React.Component {
 					<Row>
 						<h3>Choose your drink</h3>
 						<Col>
-							<Card id='name' value= 'crown' onClick={this.handleChange} style={{ width: '18rem' }}>
+							<Card id='name' value= 'crown' className={this.state.active ? 'active-selection' : 'null'} onClick={this.handleChange} style={{ width: '18rem' }}>
   								<Card.Body>
     								<Card.Title>Tequila</Card.Title>
     								<Card.Text>
       									Please select a mixer
     								</Card.Text>
-    								<Button onClick={this.handleChange} id='name' value='crown' variant="primary">Choose Beverage</Button>
+    								<Button onClick={(e)=> e.currentTarget.variant('success'), this.handleChange} id='name' value='crown' variant="primary">Choose Beverage</Button>
   								</Card.Body>
 							</Card>
 						</Col>
 						<Col>
-							<Card id='name' value= 'titos' onClick={this.handleChange} style={{ width: '18rem' }}>
+							<Card id='name' value= 'vodka' className={this.state.active ? 'active-selection' : 'null'} onClick={this.handleChange} style={{ width: '18rem' }}>
   								<Card.Body>
     								<Card.Title>Vodka</Card.Title>
     								<Card.Text>
@@ -75,13 +81,13 @@ class NewOrder extends React.Component {
 							</Card>
 						</Col>
 						<Col>
-							<Card id='name' value= 'gin' onClick={this.handleChange} style={{ width: '18rem' }}>
+							<Card id='name' value= 'whiskey' className='' onClick={this.handleChange} style={{ width: '18rem' }}>
   								<Card.Body>
     								<Card.Title>Whiskey</Card.Title>
     								<Card.Text>
       									Please select a mixer
     								</Card.Text>
-    								<Button onClick={this.handleChange} id='name' value='gin' variant="primary">Choose Beverage</Button>
+    								<Button className='' onClick={(e) => e.target.variant='success', this.handleChange} id='name' value='gin' variant="primary">Choose Beverage</Button>
   								</Card.Body>
 							</Card>
 						</Col>
